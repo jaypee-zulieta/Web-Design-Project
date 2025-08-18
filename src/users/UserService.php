@@ -1,11 +1,15 @@
 <?php
 namespace User;
 
+require __DIR__ . "/../passwords/PasswordService.php";
 require "User.php";
+
 
 use Exception;
 use User\User;
 use mysqli;
+use PasswordService\BcryptPasswordService;
+use PasswordService\PasswordService;
 
 interface UserService 
 {
@@ -20,10 +24,17 @@ class MySQLUserService implements UserService
 {
 
   private mysqli $connection;
+  private PasswordService $passwordService;
 
   public function __construct(mysqli $connection)
   {
+    $this->passwordService = new BcryptPasswordService();
     $this->connection = $connection;
+  }
+
+  public function setPasswordService(PasswordService $passwordService): void
+  {
+    $this->passwordService = $passwordService;
   }
 
   public function getUserByEDPNumber(string $EDPNumber): User | null
@@ -75,7 +86,7 @@ class MySQLUserService implements UserService
       throw new UserException("User with EDP number " . $edpNumber . " already exists.");
 
     $fullName = $user->getFullName();
-    $password = $user->getPassword();
+    $password = $this->passwordService->hash($user->getPassword());
     $department = $user->getDepartment();
 
     $sql = "INSERT INTO users (edp_number, user_password, full_name, department) VALUES (?, ?, ? ,?)";
