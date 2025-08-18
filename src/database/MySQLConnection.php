@@ -3,7 +3,8 @@ namespace DatabaseConnection;
 
 use mysqli;
 
-class MySQLConnectionConfiguration {
+class MySQLConnectionConfiguration 
+{
  
   private static MySQLConnectionConfiguration | null $instance = null;
   private mysqli $connection;
@@ -21,13 +22,15 @@ class MySQLConnectionConfiguration {
       die("Connection failed! " . $this->connection->connect_error);
   }
 
-  public static function getInstance(): MySQLConnectionConfiguration {
+  public static function getInstance(): MySQLConnectionConfiguration 
+  {
     if(self::$instance === null) 
       self::$instance = new MySQLConnectionConfiguration();
     return self::$instance;
   }
 
-  public function getConnection(): mysqli {
+  public function getConnection(): mysqli 
+  {
     return $this->connection;
   }
 }
