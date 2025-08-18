@@ -2,7 +2,7 @@
 namespace User;
 
 require __DIR__ . "/../passwords/PasswordService.php";
-require "User.php";
+require __DIR__ . "/User.php";
 
 
 use Exception;

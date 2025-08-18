@@ -18,8 +18,8 @@
     <div>
     <?php
 
-    require "../src/database/MySQLConnection.php";
-    require "../src/users/UserService.php";
+    require __DIR__ . "/../src/database/MySQLConnection.php";
+    require __DIR__ . "/../src/users/UserService.php";
 
     use DatabaseConnection\MySQLConnectionConfiguration;
     use User\MySQLUserService;
