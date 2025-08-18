@@ -7,7 +7,8 @@ use Exception;
 use User\User;
 use mysqli;
 
-interface UserService {
+interface UserService 
+{
   public function getUserByEDPNumber(string $EDPNumber): User | null;
   public function userExistsByEDPNumber(string $EDPNumber): bool;
   public function createUser(User $user): User;
@@ -15,7 +16,8 @@ interface UserService {
 
 class UserException extends Exception {}
 
-class MySQLUserService implements UserService {
+class MySQLUserService implements UserService 
+{
 
   private mysqli $connection;
 
@@ -36,7 +38,8 @@ class MySQLUserService implements UserService {
 
     $result = $statement->get_result();
 
-    if($row = $result->fetch_assoc()) {
+    if($row = $result->fetch_assoc()) 
+    {
       return new User(
         $row["edp_number"],
         $row["full_name"],
@@ -56,7 +59,8 @@ class MySQLUserService implements UserService {
 
     $result = $statement->get_result();
 
-    if($row = $result->fetch_assoc()) {
+    if($row = $result->fetch_assoc()) 
+    {
       $count = $row["count"];
       return $count > 0;
     }

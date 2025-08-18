@@ -1,7 +1,8 @@
 <?php
 namespace User;
 
-class User {
+class User 
+{
 
   private string $EDPnumber;
   private string $fullName;
