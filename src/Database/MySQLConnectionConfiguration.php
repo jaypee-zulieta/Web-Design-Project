@@ -1,5 +1,5 @@
 <?php
-namespace DatabaseConnection;
+namespace App\Database;
 
 use mysqli;
 
@@ -34,5 +34,3 @@ class MySQLConnectionConfiguration
     return $this->connection;
   }
 }
-
-?>

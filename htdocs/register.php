@@ -18,13 +18,12 @@
     <div>
     <?php
 
-    require __DIR__ . "/../src/database/MySQLConnection.php";
-    require __DIR__ . "/../src/users/UserService.php";
-
-    use DatabaseConnection\MySQLConnectionConfiguration;
-    use User\MySQLUserService;
-    use User\User;
-    use User\UserException;
+    require __DIR__ . "/../bootstrap/app.php";
+    
+    use App\User\MySQLUserService;
+    use App\User\User;
+    use App\User\UserException;
+    use App\Database\MySQLConnectionConfiguration;
 
     if(
       !empty($EDPNumber = $_POST["edp_number"]) &&

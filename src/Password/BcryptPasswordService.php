@@ -1,11 +1,5 @@
 <?php
-namespace PasswordService;
-
-interface PasswordService
-{
-  public function compare(string $plainTextPassword, string $hashedPassword): bool;
-  public function hash(string $plainTextPassword): string;
-}
+namespace App\Password;
 
 class BcryptPasswordService implements PasswordService
 {
@@ -19,6 +13,3 @@ class BcryptPasswordService implements PasswordService
     return password_hash($plainTextPassword, PASSWORD_BCRYPT);
   }
 }
-
-
-?>
