@@ -9,10 +9,10 @@ EXPORT DB_PASSWORD=your_database_password
 EXPORT DB=your_database
 ```
 
-2. Secondly, `cd` into the **htdocs** folder and run this command in the terminal.
+2. Secondly, run this command in the terminal.
 
 ```bash
-php -S localhost:8080
+php -S localhost:8080 -t htdocs
 ```
 
 _note: you can change the host and the port number._
