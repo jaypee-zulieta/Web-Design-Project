@@ -1,24 +1,8 @@
 <?php
-namespace User;
-
-require __DIR__ . "/../passwords/PasswordService.php";
-require __DIR__ . "/User.php";
-
-
-use Exception;
-use User\User;
+namespace App\User;
 use mysqli;
-use PasswordService\BcryptPasswordService;
-use PasswordService\PasswordService;
-
-interface UserService 
-{
-  public function getUserByEDPNumber(string $EDPNumber): User | null;
-  public function userExistsByEDPNumber(string $EDPNumber): bool;
-  public function createUser(User $user): User;
-}
-
-class UserException extends Exception {}
+use App\Password\PasswordService;
+use App\Password\BcryptPasswordService;
 
 class MySQLUserService implements UserService 
 {
@@ -102,5 +86,3 @@ class MySQLUserService implements UserService
     );
   }
 }
-
-?>

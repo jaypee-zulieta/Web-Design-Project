@@ -1,17 +1,9 @@
 <?php
-namespace Auth;
-
-require __DIR__ . "/../users/UserService.php";
-
-use PasswordService\PasswordService;
-use User\User;
-use User\UserException;
-use User\UserService;
-
-interface AuthenticationService
-{
-  public function login(string $EDPNumber, string $password): User;
-}
+namespace App\Auth;
+use App\User\UserService;
+use App\User\UserException;
+use App\Password\PasswordService;
+use App\User\User;
 
 class StandardAuthenticationService implements AuthenticationService 
 {
@@ -36,6 +28,3 @@ class StandardAuthenticationService implements AuthenticationService
     return $user;
   }
 }
-
-
-?>
